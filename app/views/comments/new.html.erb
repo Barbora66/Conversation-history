@@ -1,0 +1,12 @@
+<div class="bg-white shadow-sm py-5 rounded-lg mx-auto w-1/2">
+  <% content_for :title, "New comment" %>
+
+  <div class="flex justify-between items-center px-8">
+    <h1 class="font-medium tracking-wide text-2xl">New comment</h1>
+    <%= link_to "Back", project_path(@comment.project), class: "ml-2 rounded-md px-3.5 py-2 bg-gray-100 hover:bg-gray-50 inline-block font-normal text-gray-900" %>
+  </div>
+  <div class="border-b-2 border-gray-100 mt-2"></div>
+  <div class="mt-10 px-8 flex-1">
+    <%= render "form", comment: @comment, url: project_comments_path(@comment.project) %>
+  </div>
+</div>
