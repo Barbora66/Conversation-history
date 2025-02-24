@@ -11,6 +11,11 @@ rails db:seed
 rails s
 ```
 
+In another terminal run
+```
+rails tailwindcss:watch
+```
+
 To run test
 
 ```
