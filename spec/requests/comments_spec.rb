@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "Comments", type: :request do
   let!(:current_user) { User.create!(name: "Barbora") }
@@ -11,7 +11,7 @@ RSpec.describe "Comments", type: :request do
   describe "POST /projects/123/comments" do
     it "should create comment" do
       expect do
-        post project_comments_path(project), params: { comment: { content: "This is a comment by Barbora on Project 1" } }
+        post project_comments_path(project), params: {comment: {content: "This is a comment by Barbora on Project 1"}}
       end.to change(Comment, :count).by(1)
 
       comment = Comment.last
@@ -25,7 +25,7 @@ RSpec.describe "Comments", type: :request do
     it "should update comment" do
       comment = Comment.create!(project: project, user: current_user, content: "This is a comment by Barbora on Project 1")
 
-      patch project_comment_path(project, comment), params: { comment: { content: "This is an updated comment by Barbora on Project 1" } }
+      patch project_comment_path(project, comment), params: {comment: {content: "This is an updated comment by Barbora on Project 1"}}
 
       comment.reload
       expect(comment.content).to eq("This is an updated comment by Barbora on Project 1")
