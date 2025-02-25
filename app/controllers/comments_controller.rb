@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: %i[edit update destroy]
 
   def edit
+    raise "You can't edit this comment" unless @comment.user == current_user
   end
 
   def create
@@ -17,6 +18,8 @@ class CommentsController < ApplicationController
   end
 
   def update
+    raise "You can't update this comment" unless @comment.user == current_user
+
     if @comment.update(comment_params)
       redirect_to project_path(@comment.project), notice: "Comment was successfully updated."
     else
